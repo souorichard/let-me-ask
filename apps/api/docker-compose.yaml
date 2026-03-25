@@ -1,0 +1,11 @@
+services:
+  let-me-ask:
+    image: pgvector/pgvector:pg18
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: let-me-ask
+    ports:
+      - 5432:5432
+    volumes:
+      - ./docker/setup.sql:/docker-entrypoint-initdb.d/setup.sql
