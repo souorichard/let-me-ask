@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "name": "let-me-ask",
+  "version": "1.0.0",
+  "description": "",
+  "workspaces": [
+    "apps"
+  ],
+  "packageManager": "pnpm@10.33.00",
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.9"
+  }
+}
