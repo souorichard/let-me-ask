@@ -1,5 +1,6 @@
 services:
   let-me-ask:
+    container_name: let-me-ask
     image: pgvector/pgvector:pg18
     environment:
       POSTGRES_USER: docker
