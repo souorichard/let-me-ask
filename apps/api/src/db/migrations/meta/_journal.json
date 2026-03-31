@@ -15,6 +15,20 @@
       "when": 1774798556270,
       "tag": "0001_bored_mattie_franklin",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1774912943292,
+      "tag": "0002_dusty_sinister_six",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1774916550001,
+      "tag": "0003_ambiguous_garia",
+      "breakpoints": true
     }
   ]
 }

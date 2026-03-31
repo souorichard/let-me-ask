@@ -23,7 +23,6 @@ export function useCreateRoom() {
 
       return result
     },
-    mutationKey: ['create-room'],
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['rooms'] })
     },

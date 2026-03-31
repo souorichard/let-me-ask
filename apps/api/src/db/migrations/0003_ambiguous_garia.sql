@@ -1,0 +1,1 @@
+ALTER TABLE "audio_chunks" ALTER COLUMN "embeddings" SET DATA TYPE vector(3072);

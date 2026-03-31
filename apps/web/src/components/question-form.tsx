@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import { Textarea } from '@/components/ui/textarea'
+import { useCreateQuestion } from '@/http/use-create-question'
 import { Field, FieldError, FieldLabel } from './ui/field'
 
 const createQuestionSchema = z.object({
@@ -27,6 +28,8 @@ interface QuestionFormProps {
 }
 
 export function QuestionForm({ roomId }: QuestionFormProps) {
+  const { mutateAsync: createQuestion } = useCreateQuestion(roomId)
+
   const createQuestionForm = useForm<CreateQuestionFormData>({
     resolver: zodResolver(createQuestionSchema),
     defaultValues: {
@@ -34,8 +37,12 @@ export function QuestionForm({ roomId }: QuestionFormProps) {
     },
   })
 
-  function handleCreateQuestion({ question }: CreateQuestionFormData) {
-    console.log(question, roomId)
+  const { isSubmitting } = createQuestionForm.formState
+
+  async function handleCreateQuestion({ question }: CreateQuestionFormData) {
+    await createQuestion({ question })
+
+    createQuestionForm.reset()
   }
 
   return (
@@ -60,6 +67,7 @@ export function QuestionForm({ roomId }: QuestionFormProps) {
                 <Textarea
                   className="min-h-25"
                   placeholder="What you wanna ask?"
+                  disabled={isSubmitting}
                   {...field}
                 />
                 <FieldError>
@@ -69,7 +77,9 @@ export function QuestionForm({ roomId }: QuestionFormProps) {
             )}
           />
 
-          <Button type="submit">Send question</Button>
+          <Button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? 'Sending...' : 'Send question'}
+          </Button>
         </form>
       </CardContent>
     </Card>
